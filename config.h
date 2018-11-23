@@ -49,29 +49,26 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 /* Backlight Setup */
 #define BACKLIGHT_PIN B5
 #define BACKLIGHT_LEVELS 6
-//#define BACKLIGHT_BREATHING
+#define BACKLIGHT_BREATHING
+#define BREATHING_PERIOD 3
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION COL2ROW
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
-#define DEBOUNCING_DELAY 5
+#define DEBOUNCING_DELAY 3
 
 /* RGB Underglow
  * F5 PIN for DO60's pre-soldered WS2812 LEDs
  */
 #define RGB_DI_PIN F5
 #define RGBLIGHT_ANIMATIONS
-#define RGBLED_NUM 20    			// Number of LEDs
+#define RGBLED_NUM 20
 #define RGBLIGHT_HUE_STEP 16
 #define RGBLIGHT_SAT_STEP 16
 #define RGBLIGHT_VAL_STEP 16
-#define RGBLIGHT_SLEEP        // Off on Sleep
+#define RGBLIGHT_SLEEP
 #define RGBLIGHT_EFFECT_KNIGHT_OFFSET 8
-
-/* BACKLIGHT */
-#define BACKLIGHT_BREATHING
-#define BREATHING_PERIOD 6
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
