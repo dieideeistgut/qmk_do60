@@ -69,6 +69,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_VAL_STEP 16
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_EFFECT_KNIGHT_OFFSET 8
+#define RGBLIGHT_LIMIT_VAL 200
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
