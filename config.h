@@ -62,13 +62,14 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
  * F5 PIN for DO60's pre-soldered WS2812 LEDs
  */
 #define RGB_DI_PIN F5
-#define RGBLIGHT_ANIMATIONS
+//#define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 20
 #define RGBLIGHT_HUE_STEP 16
 #define RGBLIGHT_SAT_STEP 16
 #define RGBLIGHT_VAL_STEP 16
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_EFFECT_KNIGHT_OFFSET 8
+#define RGBLIGHT_LIMIT_VAL 150
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
