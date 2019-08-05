@@ -11,6 +11,10 @@
 #define L_FUNCTION 1
 #define L_HMSP 2
 
+// Status Variables
+static uint8_t layer = L_QWERTY;
+static uint8_t caps  = 0;
+
 // Used to check underglow status
 extern rgblight_config_t rgblight_config;
 
@@ -49,3 +53,65 @@ const uint16_t PROGMEM fn_actions[] = {
 void matrix_scan_user(void) {
   // Empty
 };
+
+// Set underglow color base on caps lock state and layer
+// Use _noeeprom methods to prevent underglow from enabling on restart.
+// Color predefinitions in /quantum/rgblight_list.h
+void set_underglow(void) {
+    if (layer == L_QWERTY) {
+        //rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+        rgblight_disable_noeeprom();
+        return;
+    }
+
+    if (!rgblight_config.enable) rgblight_enable_noeeprom();
+    if (rgblight_config.mode != 1) rgblight_mode_noeeprom(1);
+
+    switch (layer) {
+    case L_QWERTY:
+        //rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+        rgblight_disable_noeeprom();
+        break;
+    case L_FUNCTION:
+        //rgblight_sethsv_noeeprom_white();
+        //rgblight_disable_noeeprom();
+        //sethsv(HSV_TEAL, (LED_TYPE *)&led[0]);
+        sethsv(50,43,78, (LED_TYPE *)&led[0]);
+        sethsv(50,43,78, (LED_TYPE *)&led[15]);
+        //sethsv(HSV_TEAL, (LED_TYPE *)&led[15]);
+        rgblight_set();
+        break;
+    case L_HMSP:
+        //rgblight_sethsv_noeeprom_turquoise();
+        //rgblight_disable_noeeprom();
+        //sethsv(HSV_MAGENTA, (LED_TYPE *)&led[0]);
+        sethsv(50,43,78, (LED_TYPE *)&led[1]);
+        sethsv(50,43,78, (LED_TYPE *)&led[14]);
+        //sethsv(HSV_MAGENTA, (LED_TYPE *)&led[15]);
+        rgblight_set();
+        break;
+    default:
+        rgblight_disable_noeeprom();
+        //rgblight_mode_noeeprom(RGBLIGHT_MODE_BREATHING);
+        break;
+    }
+}
+
+// Update layer and set underglow
+uint32_t layer_state_set_user(uint32_t state) {
+    int new_layer = biton32(state);
+    if (layer != new_layer) {
+        layer = new_layer;
+        set_underglow();
+    }
+    return state;
+}
+
+// Update caps lock status and set underglow
+void led_set_user(uint8_t usb_led) {
+    int new_caps = usb_led & (1<<USB_LED_CAPS_LOCK);
+    if (caps != new_caps) {
+        caps = new_caps;
+        set_underglow();
+    }
+}
