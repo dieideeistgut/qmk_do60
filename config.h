@@ -21,11 +21,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6060
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    Shopkey by Doyu Studio
-#define PRODUCT         Do60
 #define DESCRIPTION     Do60 Keyboard PCB by Doyu Studio
 
 /* key matrix size */
@@ -64,9 +61,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN F5
 //#define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 20
-#define RGBLIGHT_HUE_STEP 16
-#define RGBLIGHT_SAT_STEP 16
-#define RGBLIGHT_VAL_STEP 16
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_EFFECT_KNIGHT_OFFSET 8
 #define RGBLIGHT_LIMIT_VAL 150
